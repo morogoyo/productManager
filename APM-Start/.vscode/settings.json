@@ -1,4 +1,9 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "editor.quickSuggestions": {
+        "comments": false, // <- no 24x7 IntelliSense in comments
+        "strings": true, // but in strings and the other parts of source files
+        "other": true
+    }
 }
