@@ -1,3 +1,5 @@
+import { IProduct } from './IProduct';
+
 import { Component } from '@angular/core';
 
 
@@ -7,7 +9,23 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
     pageTitle: string = 'Product List';
-    products: any[] = [
+    show: boolean = false;
+    _listFilter: string = 'cart';
+
+//regular getters and setters
+
+
+get listFilter(): string{
+    return this._listFilter; //returns the value of the filter from the input
+}
+set listFilter(value: string){
+        this._listFilter = value; //sets the value of lisFtilter to the value passed in
+        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+}
+
+
+    filteredProducts: IProduct[];
+    products: IProduct[] = [
         {
             "productId": 1,
             "productName": "Leaf Rake",
@@ -59,4 +77,20 @@ export class ProductListComponent {
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
         }
     ];
+
+      constructor() {
+          this.filteredProducts = this.products;
+          this.listFilter = 'cart';
+      }
+      showImages(): boolean {
+       return this.show = !this.show;
+      }
+
+      performFilter(filterBy: string): IProduct[] {
+          filterBy = filterBy.toLocaleLowerCase();
+          return this.products.filter((product: IProduct) => product.productName.toLocaleLowerCase()
+                                                 .indexOf(filterBy) !== -1);
+      }
+
+
 }
