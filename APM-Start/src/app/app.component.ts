@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+
+
+
 
 @Component({
   selector: 'pm-root',
@@ -8,6 +11,8 @@ import { Component } from '@angular/core';
             </div>`
 })
 export class AppComponent {
-  pageTitle: string = 'LMS Product Management';
+
+  pageTitle: string = 'Product Management';
+
 }
 
